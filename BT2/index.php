@@ -28,7 +28,7 @@ switch ($action) {
             };
             exit;
         }
-        echo $twig->render('add.html',[
+        echo $twig->render('add.twig',[
             "title"=> "Thêm user",
         ]);
         break;
@@ -53,7 +53,7 @@ switch ($action) {
             };
             exit;
         }
-        echo $twig->render('edit.html', ['user' => $user,'id' => $id]);
+        echo $twig->render('edit.twig', ['user' => $user,'id' => $id]);
         break;
     case 'delete':
         $id = $_GET['id'];
@@ -72,7 +72,7 @@ switch ($action) {
     default:
         $stmt = $db->query("SELECT * FROM users");
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo $twig->render('index.html', ['users' => $users]);
+        echo $twig->render('index.twig', ['users' => $users]);
         break;
 }
 ?>
